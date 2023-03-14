@@ -1,7 +1,7 @@
-fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape")
     .then(res => res.json())
     .then(data => {
-        document.body.style.backgroundImage = `url(${data.urls.raw})`
+        document.body.style.backgroundImage = `url(${data.urls.regular})`
 		document.getElementById("author").textContent = `By: ${data.user.name}`
     })
     .catch(err => {
@@ -10,26 +10,6 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 )`
 		document.getElementById("author").textContent = `By: Dodi Achmad`
     })
-
-fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-    .then(res => {
-        if (!res.ok) {
-            throw Error("Something went wrong")
-        }
-        return res.json()
-    })
-    .then(data => {
-        document.getElementById("crypto-top").innerHTML = `
-            <img src=${data.image.small} />
-            <span>${data.name}</span>
-        `
-        document.getElementById("crypto").innerHTML += `
-            <p>🎯: ${data.market_data.current_price.eur} €</p>
-            <p>👆: ${data.market_data.high_24h.eur} €</p>
-            <p>👇: ${data.market_data.low_24h.eur} €</p>
-        `
-    })
-    .catch(err => console.error(err))
 
 function getCurrentTime() {
     const date = new Date()
